@@ -1,7 +1,6 @@
 # prompt the user for their name, the distance travelling and print the output
 def main():
-    name = input("What is your name: ")
-    formatted_name = format_name(name)
+    name = input("What is your name: ").strip().title()
     try:
         distance = float(input("Distance travelling(km): "))
         category = get_category(distance)
@@ -10,16 +9,10 @@ def main():
         else:
             fare = calculate_fare(distance, category)
             print(
-                f"{formatted_name}, your {category} trip of {distance:.1f}km costs KSH {fare:.1f}."
+                f"{name}, your {category} trip of {distance:.1f}km costs KSH {fare:.1f}."
             )
     except ValueError:
         pass
-
-
-# returns the passenger's name in title case
-def format_name(n):
-    n = n.strip().title()
-    return n
 
 
 # returns the category based on the passenger's distance
